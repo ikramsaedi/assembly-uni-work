@@ -1,12 +1,9 @@
 .ORIG x3000
 
 ; clear registers
-AND R0, R0, #0 ; x3100
-AND R1, R1, #0 ; x3101
-AND R2, R2, #0 ; x3102
-AND R3, R3, #0 ; x3103
-AND R4, R4, #0 ; x3104
-AND R5, R5, #0 ; x3105
+AND R0, R0, #0 ; used to reference X
+AND R1, R1, #0 ; used to reference Y
+AND R2, R2, #0 ; used to store outputs of calculations
 
 ; load X and Y into registers
 LDI R0, X_LOC
@@ -26,7 +23,6 @@ NOT R1, R1 ; store !R1 in R1
 AND R2, R0, R1 ; store R0 && R1 in R2 (og val !(R0 && R1))
 NOT R2, R2 ; store !R2 in R2
 ; then store that value into OR_LOC
-; i don't think  i understand waht OR is doing
 STI R2, OR_LOC
 
 ; reset R0, and R1
