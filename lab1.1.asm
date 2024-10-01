@@ -41,7 +41,20 @@ STI R2, NOT_X_LOC
 NOT R2, R1 ; store !R1 in R2
 STI R2, NOT_Y_LOC
 
-; 
+; X + 3
+ADD R2, R0, #3
+STI R2, X_PLUS_3
+
+; Y - 3
+ADD R2, R1, #-3
+STI R2, Y_MINUS_3
+
+; IF X IS EVEN, STORE 1, ELSE STORE 0
+; The reason why this works is because odd numbers in binary always end with 1
+; so when you AND a number with 1, you compare the least significant bit with 1
+; if both are 1, the output is 1. otherwise, 0
+AND R2, R0, #1
+STI R2, X_ODD_EVEN_LOC
 HALT
 
 X_LOC .FILL x3100
@@ -53,4 +66,5 @@ NOT_X_LOC .FILL x3105
 NOT_Y_LOC .FILL x3106
 X_PLUS_3 .FILL x3107
 Y_MINUS_3 .FILL x3108
+X_ODD_EVEN_LOC .FILL x3109
 .END
